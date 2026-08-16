@@ -1,0 +1,353 @@
+---
+import Logo from '../components/Logo.astro';
+import '../styles/global.css';
+
+const services = [
+  {
+    title: 'Editorial & Writing',
+    items: [
+      'Articles and blog posts in the N-Library house style',
+      'Copywriting & ghostwriting',
+      'Editing & proofreading',
+      'Speeches, résumés, and cover letters',
+      'Journalism pieces and SEO content',
+    ],
+  },
+  {
+    title: 'Tech & Science Writing',
+    items: [
+      'Explainers and long-form pieces on AI, software, and research',
+      'The studio\'s core differentiator',
+      'Backed by an active computer science background',
+    ],
+  },
+  {
+    title: 'Content Strategy',
+    items: [
+      'Social media planning, including structured 30-day plans',
+      'Content calendars across Twitter/X, LinkedIn, Instagram',
+      'Brand voice development',
+    ],
+  },
+  {
+    title: 'Programming & Technology',
+    items: [
+      'Software development, scripting, and automation',
+      'Write and build on the same project',
+      'Technical projects scoped directly with Divine',
+    ],
+  },
+];
+
+const writing = [
+  {
+    title: '"Whose AI Is It, Anyway?"',
+    tag: 'Essay',
+    desc: 'On African voices in AI governance.',
+  },
+  {
+    title: '"Whose Values? Examining African Voices in Global AI Governance Discourse"',
+    tag: 'Research Proposal',
+    desc: 'A proposal for centering post-colonial African perspectives in AI governance research. Broader research interests: reinforcement learning, AI safety.',
+  },
+  {
+    title: '30-Day Content Plan',
+    tag: 'Strategy',
+    desc: 'A structured plan executed across Twitter/X, LinkedIn, and Instagram.',
+  },
+];
+
+const broadcast = [
+  {
+    title: 'Wired Futures — AI, Africa & What\'s Next',
+    tag: 'Radio',
+    desc: 'Weekly segment on ESUT Radio examining what AI means for the continent — reporting instinct, technical fluency, and an African-futures lens in one place.',
+  },
+  {
+    title: 'Sports Journalism',
+    tag: 'CruizeNews',
+    desc: 'Match coverage including the ESUT Freshers League.',
+  },
+];
+
+const fiction = [
+  {
+    title: 'Blackwired: Echoes of the Archive',
+    tag: 'Novel · 98,000 words',
+    desc: 'Afrofuturist techno-thriller set in Neo-Lagos, 2176, following protagonist Zikora. Submitted to the Iska Book Prize and Writers Space Africa; Amazon KDP and Okada Books under consideration. First entry in a planned series — memory as resistance, post-colonial futurism, technology and tradition.',
+  },
+  {
+    title: 'The Second Independence (Umuahia Grid)',
+    tag: 'Short Story · Public AI Prize',
+    desc: 'Centers on Nne, a publicly governed West African AI system — imagining what genuine technological self-determination could look like for the region.',
+  },
+  {
+    title: '"Di Woman Wey Di Machine Forget"',
+    tag: 'Fiction · YPIT',
+    desc: 'An original Nigerian Pidgin story dramatizing how underrepresented languages get left behind in AI development.',
+  },
+];
+
+const engineering = [
+  {
+    title: 'LinUCB Contextual Bandit Educational Management System',
+    tag: 'Python · FastAPI',
+    desc: 'A recommendation engine for educational management — checkpointed learning architecture, benchmarked on real-world learning-interaction data, prepared for investor and fellowship pitch.',
+  },
+  {
+    title: 'YPIT "Artificial Future" Hackathon',
+    tag: 'Team VoiceNaija',
+    desc: 'Data scientist and backend engineer on a real-time Yoruba/Hausa voice web app — language technology built around Nigerian realities.',
+  },
+  {
+    title: 'Community & Leadership',
+    tag: 'Campus Fellowship',
+    desc: 'Head of the podcast department; media production including full coverage of BURN; AI literacy debate support for an NYSC camp competition.',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="N-Library is a writing and content studio turning technical and cultural ideas into words people actually want to read — built by a computer scientist who writes."
+    />
+    <meta name="theme-color" content="#0b0b22" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>N-Library — Uniting the World with Words</title>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="#home" class="brand" aria-label="N-Library home">
+          <Logo />
+          <span class="brand-name">N-Library</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#work">Writing</a>
+          <a href="#broadcast">Broadcast</a>
+          <a href="#fiction">Fiction</a>
+          <a href="#engineering">Engineering</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="logo-large"><Logo size={88} /></div>
+          <h1 class="hero-title">N-Library</h1>
+          <p class="hero-slogan">Uniting the World with Words</p>
+          <p class="hero-line">
+            A writing and content studio that turns technical and cultural ideas into words people
+            actually want to read — built by a computer scientist who writes.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="#work">View Selected Work</a>
+            <a class="btn btn-outline" href="#contact">Start a Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">What we do</p>
+            <h2 class="section-title">Services</h2>
+            <p class="section-sub">
+              Precision without losing the story. Every piece is treated with the same narrative
+              discipline as fiction writing — technically accurate, never simplified to the point of
+              being wrong.
+            </p>
+          </div>
+          <div class="cards">
+            {
+              services.map((s) => (
+                <div class="card">
+                  <h3>{s.title}</h3>
+                  <ul>
+                    {s.items.map((item) => <li>{item}</li>)}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Selected work</p>
+            <h2 class="section-title">Writing &amp; Strategy</h2>
+            <p class="section-sub">Essays, research, and content strategy — crossing from African perspectives on AI governance to multi-platform publishing.</p>
+          </div>
+          <div class="work-list">
+            {
+              writing.map((w) => (
+                <div class="work-item">
+                  <h3>{w.title}</h3>
+                  <span class="tag">{w.tag}</span>
+                  <p>{w.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="broadcast" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">On air</p>
+            <h2 class="section-title">Broadcast &amp; Journalism</h2>
+          </div>
+          <div class="work-list">
+            {
+              broadcast.map((b) => (
+                <div class="work-item">
+                  <h3>{b.title}</h3>
+                  <span class="tag">{b.tag}</span>
+                  <p>{b.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="fiction" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Creative</p>
+            <h2 class="section-title">Fiction</h2>
+            <p class="section-sub">Afrofuturist storytelling: whose languages, whose data, and whose futures get encoded into these systems.</p>
+          </div>
+          <div class="work-list">
+            {
+              fiction.map((f) => (
+                <div class="work-item">
+                  <h3>{f.title}</h3>
+                  <span class="tag">{f.tag}</span>
+                  <p>{f.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="engineering" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Builds</p>
+            <h2 class="section-title">Engineering</h2>
+            <p class="section-sub">The technical half of the brand — I build things and I tell stories about the things being built.</p>
+          </div>
+          <div class="work-list">
+            {
+              engineering.map((e) => (
+                <div class="work-item">
+                  <h3>{e.title}</h3>
+                  <span class="tag">{e.tag}</span>
+                  <p>{e.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">The founder</p>
+            <h2 class="section-title">About Divine</h2>
+          </div>
+          <div class="about-grid">
+            <div>
+              <p>
+                Divine is a computer science undergraduate at Enugu State University of Science and
+                Technology (ESUT), and — more central to who he is — a science fiction writer,
+                journalist, and programmer working where storytelling meets technology.
+              </p>
+              <p>
+                He founded N-Library and hosts <em>Wired Futures — AI, Africa &amp; What's Next</em>,
+                a weekly radio segment on ESUT Radio. The technical grounding — programming
+                fundamentals, algorithmic thinking, mathematical reasoning — feeds directly into
+                technology writing that is accurate, not simplified to the point of being wrong.
+              </p>
+              <p class="quote">
+                "I build things and I tell stories about the things being built — especially where
+                technology meets African identity, memory, and voice."
+              </p>
+            </div>
+            <div>
+              <p>
+                The long-term ambition isn't small: writing that doesn't just entertain, but changes
+                how people see the world — and, ideally, contributes to a more just and connected one.
+              </p>
+              <p>
+                Outside the work: a structured reading habit weighted toward Afrofuturism, writing
+                craft, and AI — plus manga, campus football, Football Manager, and chess.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Work with N-Library</p>
+            <h2 class="section-title">Contact</h2>
+          </div>
+          <div class="contact-grid">
+            <div>
+              <div class="contact-item">
+                <p class="contact-label">Phone / WhatsApp</p>
+                <p class="contact-value"><a href="tel:+2348036989732">+234 803 698 9732</a></p>
+              </div>
+              <div class="contact-item">
+                <p class="contact-label">Email</p>
+                <p class="contact-value"><a href="mailto:divinenwobodo5@gmail.com">divinenwobodo5@gmail.com</a></p>
+              </div>
+            </div>
+            <div>
+              <div class="contact-item">
+                <p class="contact-label">Business hours</p>
+                <p class="contact-value">Mon–Fri, 9:00am–6:00pm WAT<br />Sat, 9:00am–5:00pm WAT</p>
+              </div>
+              <div class="contact-item">
+                <p class="contact-label">Samples</p>
+                <p class="contact-value">Shared directly by Divine following a project discussion.</p>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            Pricing is tailored to each project and handled directly by Divine. Share a few details
+            about your project and you'll receive a quote in a follow-up.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p><span class="brand-name">N-Library</span> — Uniting the World with Words</p>
+        <p style="margin-top: 0.4rem">© <span id="year"></span> N-Library. Founded by Divine.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
