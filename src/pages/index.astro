@@ -2,6 +2,8 @@
 import Logo from '../components/Logo.astro';
 import '../styles/global.css';
 
+const ogImage = `${Astro.url.origin}${import.meta.env.BASE_URL}logo.jpg`;
+
 const services = [
   {
     title: 'Editorial & Writing',
@@ -118,6 +120,14 @@ const engineering = [
     />
     <meta name="theme-color" content="#0b0b22" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="N-Library — Uniting the World with Words" />
+    <meta
+      property="og:description"
+      content="A writing and content studio that turns technical and cultural ideas into words people actually want to read — built by a computer scientist who writes."
+    />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>N-Library — Uniting the World with Words</title>
   </head>
   <body>
@@ -142,7 +152,13 @@ const engineering = [
     <main>
       <section id="home" class="hero">
         <div class="container">
-          <div class="logo-large"><Logo size={88} /></div>
+          <img
+            src={`${import.meta.env.BASE_URL}logo.jpg`}
+            alt="N-Library logo — a golden African mask above an open book on deep indigo"
+            class="logo-img"
+            width="720"
+            height="480"
+          />
           <h1 class="hero-title">N-Library</h1>
           <p class="hero-slogan">Uniting the World with Words</p>
           <p class="hero-line">
