@@ -1,5 +1,4 @@
 ---
-import Logo from '../components/Logo.astro';
 import '../styles/global.css';
 
 const ogImage = `${Astro.url.origin}${import.meta.env.BASE_URL}logo.jpg`;
@@ -134,7 +133,13 @@ const engineering = [
     <header class="nav">
       <div class="container nav-inner">
         <a href="#home" class="brand" aria-label="N-Library home">
-          <Logo />
+          <img
+            src={`${import.meta.env.BASE_URL}logo.jpg`}
+            alt="N-Library logo"
+            class="nav-logo"
+            width="60"
+            height="40"
+          />
           <span class="brand-name">N-Library</span>
         </a>
         <nav class="nav-links" aria-label="Primary">

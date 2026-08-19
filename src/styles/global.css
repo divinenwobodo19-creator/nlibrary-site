@@ -87,6 +87,13 @@ a:hover {
   gap: 0.7rem;
 }
 
+.nav-logo {
+  height: 40px;
+  width: auto;
+  border-radius: 6px;
+  display: block;
+}
+
 .brand-name {
   font-family: var(--serif);
   font-weight: 700;
