@@ -1,7 +1,6 @@
 ---
+import Logo from '../components/Logo.astro';
 import '../styles/global.css';
-
-const ogImage = `${Astro.url.origin}${import.meta.env.BASE_URL}logo.jpg`;
 
 const services = [
   {
@@ -10,7 +9,7 @@ const services = [
       'Articles and blog posts in the N-Library house style',
       'Copywriting & ghostwriting',
       'Editing & proofreading',
-      'Speeches, résumés, and cover letters',
+      'Speeches and cover letters',
       'Journalism pieces and SEO content',
     ],
   },
@@ -103,7 +102,7 @@ const engineering = [
   {
     title: 'Community & Leadership',
     tag: 'Campus Fellowship',
-    desc: 'Head of the podcast department; media production including full coverage of BURN; AI literacy debate support for an NYSC camp competition.',
+    desc: 'Head of the podcast department; media production incl. campus-wide coverage and events; AI literacy debate support for an NYSC camp competition.',
   },
 ];
 ---
@@ -119,30 +118,21 @@ const engineering = [
     />
     <meta name="theme-color" content="#0b0b22" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="N-Library — Uniting the World with Words" />
-    <meta
-      property="og:description"
-      content="A writing and content studio that turns technical and cultural ideas into words people actually want to read — built by a computer scientist who writes."
-    />
-    <meta property="og:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
     <title>N-Library — Uniting the World with Words</title>
   </head>
   <body>
-    <header class="nav">
+    <header class="nav" id="nav">
       <div class="container nav-inner">
         <a href="#home" class="brand" aria-label="N-Library home">
-          <img
-            src={`${import.meta.env.BASE_URL}logo.jpg`}
-            alt="N-Library logo"
-            class="nav-logo"
-            width="60"
-            height="40"
-          />
+          <Logo />
           <span class="brand-name">N-Library</span>
         </a>
-        <nav class="nav-links" aria-label="Primary">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav-links" id="nav-links" aria-label="Primary">
           <a href="#services">Services</a>
           <a href="#work">Writing</a>
           <a href="#broadcast">Broadcast</a>
@@ -155,17 +145,11 @@ const engineering = [
     </header>
 
     <main>
-      <section id="home" class="hero">
+      <section id="home" class="hero fade-in">
         <div class="container">
-          <img
-            src={`${import.meta.env.BASE_URL}logo.jpg`}
-            alt="N-Library logo — a golden African mask above an open book on deep indigo"
-            class="logo-img"
-            width="720"
-            height="480"
-          />
+          <div class="logo-large"><Logo size={88} /></div>
           <h1 class="hero-title">N-Library</h1>
-          <p class="hero-slogan">Uniting the World with Words</p>
+          <p class="hero-slogan"><span class="slogan-underline">Uniting the World with Words</span></p>
           <p class="hero-line">
             A writing and content studio that turns technical and cultural ideas into words people
             actually want to read — built by a computer scientist who writes.
@@ -177,7 +161,7 @@ const engineering = [
         </div>
       </section>
 
-      <section id="services" class="section">
+      <section id="services" class="section fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">What we do</p>
@@ -203,7 +187,7 @@ const engineering = [
         </div>
       </section>
 
-      <section id="work" class="section">
+      <section id="work" class="section section-alt fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Selected work</p>
@@ -213,7 +197,7 @@ const engineering = [
           <div class="work-list">
             {
               writing.map((w) => (
-                <div class="work-item">
+                <div class="work-item work-writing">
                   <h3>{w.title}</h3>
                   <span class="tag">{w.tag}</span>
                   <p>{w.desc}</p>
@@ -224,7 +208,7 @@ const engineering = [
         </div>
       </section>
 
-      <section id="broadcast" class="section">
+      <section id="broadcast" class="section fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">On air</p>
@@ -233,10 +217,13 @@ const engineering = [
           <div class="work-list">
             {
               broadcast.map((b) => (
-                <div class="work-item">
-                  <h3>{b.title}</h3>
-                  <span class="tag">{b.tag}</span>
-                  <p>{b.desc}</p>
+                <div class="work-item work-broadcast">
+                  <div class="work-icon">🎙</div>
+                  <div class="work-content">
+                    <h3>{b.title}</h3>
+                    <span class="tag">{b.tag}</span>
+                    <p>{b.desc}</p>
+                  </div>
                 </div>
               ))
             }
@@ -244,7 +231,7 @@ const engineering = [
         </div>
       </section>
 
-      <section id="fiction" class="section">
+      <section id="fiction" class="section section-alt fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Creative</p>
@@ -254,7 +241,7 @@ const engineering = [
           <div class="work-list">
             {
               fiction.map((f) => (
-                <div class="work-item">
+                <div class="work-item work-fiction">
                   <h3>{f.title}</h3>
                   <span class="tag">{f.tag}</span>
                   <p>{f.desc}</p>
@@ -265,7 +252,7 @@ const engineering = [
         </div>
       </section>
 
-      <section id="engineering" class="section">
+      <section id="engineering" class="section fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Builds</p>
@@ -275,9 +262,9 @@ const engineering = [
           <div class="work-list">
             {
               engineering.map((e) => (
-                <div class="work-item">
+                <div class="work-item work-engineering">
                   <h3>{e.title}</h3>
-                  <span class="tag">{e.tag}</span>
+                  <span class="tag tag-code">{e.tag}</span>
                   <p>{e.desc}</p>
                 </div>
               ))
@@ -286,45 +273,47 @@ const engineering = [
         </div>
       </section>
 
-      <section id="about" class="section">
+      <section id="about" class="section section-alt fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">The founder</p>
             <h2 class="section-title">About Divine</h2>
           </div>
           <div class="about-grid">
-            <div>
+            <div class="about-photo-wrap">
+              <img src="/me.jpg" alt="Divine Nwobodo" class="about-photo" loading="lazy" />
+            </div>
+            <div class="about-text">
               <p>
-                Divine is a computer science undergraduate at Enugu State University of Science and
-                Technology (ESUT), and — more central to who he is — a science fiction writer,
-                journalist, and programmer working where storytelling meets technology.
+                Divine is a science fiction writer, journalist, and programmer — and the founder of
+                N-Library. He studies Computer Science at Enugu State University of Science and
+                Technology (ESUT), where the technical grounding in programming, algorithmic thinking,
+                and mathematical reasoning feeds directly into technology writing that is accurate,
+                not simplified to the point of being wrong.
               </p>
               <p>
-                He founded N-Library and hosts <em>Wired Futures — AI, Africa &amp; What's Next</em>,
-                a weekly radio segment on ESUT Radio. The technical grounding — programming
-                fundamentals, algorithmic thinking, mathematical reasoning — feeds directly into
-                technology writing that is accurate, not simplified to the point of being wrong.
+                He hosts <em>Wired Futures — AI, Africa &amp; What's Next</em>,
+                a weekly radio segment on ESUT Radio examining what AI means for the continent —
+                reporting instinct, technical fluency, and an African-futures lens in one place.
               </p>
               <p class="quote">
                 "I build things and I tell stories about the things being built — especially where
                 technology meets African identity, memory, and voice."
               </p>
-            </div>
-            <div>
               <p>
                 The long-term ambition isn't small: writing that doesn't just entertain, but changes
                 how people see the world — and, ideally, contributes to a more just and connected one.
               </p>
               <p>
-                Outside the work: a structured reading habit weighted toward Afrofuturism, writing
-                craft, and AI — plus manga, campus football, Football Manager, and chess.
+                Outside the work: reading weighted toward Afrofuturism, writing craft, and AI —
+                plus manga, campus football, Football Manager, and chess.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="section">
+      <section id="contact" class="section fade-in">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Work with N-Library</p>
@@ -348,17 +337,7 @@ const engineering = [
               </div>
               <div class="contact-item">
                 <p class="contact-label">Samples</p>
-                <p class="contact-value">Shared directly by Divine following a project discussion.</p>
-              </div>
-            </div>
-            <div>
-              <div class="contact-item">
-                <p class="contact-label">Social profiles</p>
-                <p class="contact-value">
-                  <a href="https://www.linkedin.com/in/divine-nwobodo-136b58355/" target="_blank" rel="noopener">LinkedIn — Divine Nwobodo</a><br />
-                  <a href="https://web.facebook.com/profile.php?id=61569930212551" target="_blank" rel="noopener">Facebook — Divine Nwobodo</a><br />
-                  <a href="https://nubianresearch.com/profile/r6XnFEQdKtnVWYq7X9RLKvYKPU3O198n" target="_blank" rel="noopener">Nubian Research — Divine Chidera</a>
-                </p>
+                <p class="contact-value"><a href="#work">View selected work on this page</a></p>
               </div>
             </div>
           </div>
@@ -379,6 +358,51 @@ const engineering = [
 
     <script>
       document.getElementById('year').textContent = String(new Date().getFullYear());
+
+      const toggle = document.getElementById('nav-toggle');
+      const links = document.getElementById('nav-links');
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+      links.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => {
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        })
+      );
+
+      const sections = document.querySelectorAll('section[id]');
+      const navAnchors = document.querySelectorAll('.nav-links a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navAnchors.forEach((a) => a.classList.remove('active'));
+              const id = entry.target.getAttribute('id');
+              const match = document.querySelector(`.nav-links a[href="#${id}"]`);
+              if (match) match.classList.add('active');
+            }
+          });
+        },
+        { rootMargin: '-40% 0px -55% 0px' }
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      const fadeEls = document.querySelectorAll('.fade-in');
+      const fadeObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              fadeObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      fadeEls.forEach((el) => fadeObs.observe(el));
     </script>
   </body>
 </html>
