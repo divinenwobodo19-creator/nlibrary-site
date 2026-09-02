@@ -106,6 +106,10 @@ a:hover {
   max-width: 200px;
   height: auto;
   border-radius: 12px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 20px rgba(222, 140, 15, 0.3), 0 0 40px rgba(222, 140, 15, 0.1);
+  padding: 8px;
+  background: var(--indigo-900);
 }
 
 .brand-name {
