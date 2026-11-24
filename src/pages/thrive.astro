@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
 
-// Paste the Gumroad product URL here once the course is live. While empty,
+// Paste the Selar product URL here once the course is live. While empty,
 // the course button asks for the link on WhatsApp instead.
-const GUMROAD_URL = '';
+const COURSE_URL = '';
 
 const WHATSAPP = '2348036989732';
 const wa = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
@@ -11,11 +11,11 @@ const wa = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponen
 const offers = [
   {
     eyebrow: 'Learn on your own',
-    title: 'AI Prompt Engineering Mastery',
+    title: 'AI Prompt Playbook',
     price: '₦2,500',
-    desc: 'The four-week self-study course behind the N-Library bootcamp: notes, demo prompts, exercises, a cheat sheet and slides. Self-study; no live sessions included.',
-    cta: GUMROAD_URL ? 'Get the course' : 'Send me the course link',
-    href: GUMROAD_URL || wa('Hi N-Library, I was at THRIVE. Please send me the link to the AI Prompt Engineering course. My name is: '),
+    desc: '20 short lessons and 50 ready-to-use prompts for school, jobs, business and everyday life. One PDF made for your phone, 15 minutes a day. Self-study.',
+    cta: COURSE_URL ? 'Get the course' : 'Send me the course link',
+    href: COURSE_URL || wa('Hi N-Library, I was at THRIVE. Please send me the link to the AI Prompt Playbook. My name is: '),
   },
   {
     eyebrow: 'Learn in a room',
