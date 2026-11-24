@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+
+// Paste the Gumroad product URL here once the course is live. While empty,
+// the course button asks for the link on WhatsApp instead.
+const GUMROAD_URL = '';
+
+const WHATSAPP = '2348036989732';
+const wa = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
+const offers = [
+  {
+    eyebrow: 'Learn on your own',
+    title: 'AI Prompt Engineering Mastery',
+    price: '₦2,500',
+    desc: 'The four-week self-study course behind the N-Library bootcamp: notes, demo prompts, exercises, a cheat sheet and slides. Self-study; no live sessions included.',
+    cta: GUMROAD_URL ? 'Get the course' : 'Send me the course link',
+    href: GUMROAD_URL || wa('Hi N-Library, I was at THRIVE. Please send me the link to the AI Prompt Engineering course. My name is: '),
+  },
+  {
+    eyebrow: 'Learn in a room',
+    title: 'Saturday AI Workshop — January 2027',
+    price: '₦7,500 · early bird ₦5,000',
+    desc: 'Three hours, hands-on. Prompting that works, building a small tool for a real problem, and using AI without letting it think for you. 15–25 seats.',
+    cta: 'Reserve a seat',
+    href: wa('Hi N-Library, I was at THRIVE. Please reserve me an early-bird seat at the January AI workshop. My name is: '),
+  },
+  {
+    eyebrow: 'For school owners & teachers',
+    title: 'GradePulse',
+    price: 'Free up to 40 students · ₦500 per student per term',
+    desc: 'Know every week which students are falling behind, in each subject, from the tests teachers already give — with printable parent progress sheets.',
+    cta: 'Book a school demo',
+    href: wa('Hi N-Library, I was at THRIVE. I would like a GradePulse demo for my school. School name: '),
+    secondary: { label: 'Visit gradepulse.com.ng', href: 'https://gradepulse.com.ng' },
+  },
+  {
+    eyebrow: 'Stay in touch',
+    title: 'Get N-Library updates',
+    price: 'Free',
+    desc: 'New articles, Wired Futures episodes, workshop dates and tools worth trying. A few messages a month, never spam.',
+    cta: 'Join on WhatsApp',
+    href: wa('Hi N-Library, I was at THRIVE. Please add me to your updates. My name is: '),
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Own the Gap — resources from Nwobodo Divine Chidera's THRIVE 2026 talk: the AI course, the January workshop, GradePulse and N-Library updates." />
+    <meta name="theme-color" content="#0b0b22" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>Own the Gap — N-Library at THRIVE</title>
+    <style>
+      .thrive-hero { padding: 4.5rem 0 2.5rem; text-align: center; }
+      .thrive-hero .hero-title { line-height: 1.15; margin: 0.6rem 0 1.2rem; }
+      .thrive-hero img { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1.2rem; }
+      .offer-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; padding-bottom: 4rem; }
+      .offer-cards .card { display: flex; flex-direction: column; }
+      .offer-price { color: var(--ink); font-weight: 600; margin: -0.2rem 0 0.8rem; font-size: 0.95rem; }
+      .offer-cards .card p.desc { flex: 1; margin-bottom: 1.3rem; }
+      .offer-actions { display: flex; flex-direction: column; gap: 0.6rem; }
+      .offer-actions .btn { text-align: center; }
+      .small-link { font-size: 0.9rem; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="thrive-hero">
+        <img src={`${import.meta.env.BASE_URL}nlibrary-logo.jpg`} alt="N-Library logo" />
+        <p class="eyebrow">THRIVE 2026 · Own the Gap</p>
+        <h1 class="hero-title">Stop renting. Build one of your own.</h1>
+        <p class="hero-line">
+          Thank you for being in the room. Pick what you need next — each button opens WhatsApp
+          with a message ready to send.
+        </p>
+      </section>
+
+      <section class="offer-cards">
+        {
+          offers.map((o) => (
+            <article class="card">
+              <p class="eyebrow">{o.eyebrow}</p>
+              <h3>{o.title}</h3>
+              <p class="offer-price">{o.price}</p>
+              <p class="desc">{o.desc}</p>
+              <div class="offer-actions">
+                <a class="btn btn-gold" href={o.href} target="_blank" rel="noopener">{o.cta}</a>
+                {o.secondary && (
+                  <a class="small-link" href={o.secondary.href} target="_blank" rel="noopener">{o.secondary.label} →</a>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>N-Library — Uniting the World with Words · <a href={import.meta.env.BASE_URL}>nlibrary-site.vercel.app</a></p>
+        <p>Nwobodo Divine Chidera · divinenwobodo5@gmail.com · +234 803 698 9732</p>
+      </div>
+    </footer>
+  </body>
+</html>
